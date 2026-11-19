@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подорожі світом</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf6ff;
+    color: #222;
+    margin: 0;
+}
+header {
+    background-color: #4a9bd6;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+nav {
+    background-color: #287bb5;
+    text-align: center;
+    padding: 12px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 12px;
+}
+main {
+    width: 85%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+section {
+    background: white;
+    padding: 18px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+h2 { color: #287bb5; }
+img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+.places {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.place {
+    flex: 1 1 240px;
+}
+.place img { height: 170px; }
+footer {
+    background: #287bb5;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+form input, form textarea {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px;
+    margin: 6px 0 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font: 16px Arial, sans-serif;
+}
+form textarea { height: 125px; resize: vertical; }
+form button {
+    padding: 8px 15px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: #eee;
+    cursor: pointer;
+}
+#formResult { color: #287b45; }
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 20px;
+    overflow-y: auto;
+}
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    position: relative;
+    background: white;
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px #0003;
+}
+.close-modal {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    border: 0;
+    background: transparent;
+    font-size: 30px;
+    cursor: pointer;
+    color: #555;
+}
+body.modal-open { overflow: hidden; }
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🌍 Подорожі світом</h1>
+    <p>Цікаві місця нашої планети</p>
+</header>
+
+<nav>
+    <a href="#about">Про подорожі</a>
+    <a href="#places">Країни</a>
+    <a href="#dream">Моя мрія</a>
+<a href="#" data-open-contacts>Контакти</a></nav>
+
+<main>
+    <section id="about">
+        <h2>Що таке подорожі?</h2>
+        <p>Подорожі — це можливість побачити нові місця, познайомитися з іншими культурами та дізнатися багато цікавого. У світі є багато красивих міст, гір, морів та островів.</p>
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80" alt="Красивые горы и озеро">
+    </section>
+
+    <section id="places">
+        <h2>Цікаві місця</h2>
+        <div class="places">
+            <div class="place">
+                <h3>🇮🇹 Італія</h3>
+                <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=700&q=80" alt="Красивый город в Италии">
+                <p>В Італії можна побачити старовинні будівлі, красиві вулиці та скуштувати смачну піцу.</p>
+            </div>
+            <div class="place">
+                <h3>🇯🇵 Японія</h3>
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=700&q=80" alt="Улица в Японии">
+                <p>Японія известна своими храмами, необычными городами и красивой природой.</p>
+            </div>
+            <div class="place">
+                <h3>🇫🇷 Франція</h3>
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80" alt="Эйфелева башня в Париже">
+                <p>У Парижі знаходиться знаменита Ейфелева вежа. Це одне з найвідоміших місць у світі.</p>
+            </div>
+            <div class="place">
+                <h3>🇪🇬 Єгипет</h3>
+                <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=700&q=80" alt="Пирамиды Египта">
+                <p>У Єгипті можна побачити стародавні піраміди та дізнатися історію фараонів.</p>
+            </div>
+            <div class="place">
+                <h3>🇨🇭 Швейцарія</h3>
+                <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=700&q=80" alt="Горы Швейцарии">
+                <p>Швейцарія славится высокими горами, озёрами и красивыми пейзажами.</p>
+            </div>
+            <div class="place">
+                <h3>🇬🇷 Греція</h3>
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=700&q=80" alt="Белые дома на греческом острове">
+                <p>У Греції є красиві острови, чисте море та стародавні пам’ятки.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dream">
+        <h2>Куди я хотів би поїхати?</h2>
+        <p>Я хотів би побувати в різних країнах, побачити відомі пам’ятки та скуштувати місцеву їжу. Думаю, подорожувати дуже цікаво, бо щоразу дізнаєшся щось нове.</p>
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1000&q=80" alt="Карта и вещи для путешествия">
+    </section>
+</main>
+
+
+    <div id="contactsModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="contactsTitle">
+            <button type="button" class="close-modal" id="closeContacts" aria-label="Закрити">×</button>
+            <h2 id="contactsTitle">Контакти</h2>
+            <p>Якщо хочеш зв’язатися зі мною, заповни форму нижче.</p>
+            <form id="contactForm">
+                <label for="contactName">Ім’я</label><br>
+                <input id="contactName" name="name" type="text" required><br>
+
+                <label for="contactEmail">Електронна пошта</label><br>
+                <input id="contactEmail" name="email" type="email" required><br>
+
+                <label for="contactMessage">Повідомлення</label><br>
+                <textarea id="contactMessage" name="message" required></textarea><br>
+
+                <button type="submit">Відправити</button>
+                <p id="formResult"></p>
+            </form>
+        </div>
+    </div>
+
+<footer>
+    <p>Мій сайт про подорожі 🌎</p>
+    <p><a style="color:white" href="#" class="openContacts">Контакти</a></p>
+</footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('contactsModal');
+    const closeButton = document.getElementById('closeContacts');
+    const contactLinks = document.querySelectorAll('.openContacts');
+
+    function openModal(event) {
+        event.preventDefault();
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    }
+
+    contactLinks.forEach(function (link) {
+        link.addEventListener('click', openModal);
+    });
+
+    closeButton.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeModal();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        document.getElementById('formResult').textContent =
+            'Дякую! Форму заповнено. Це навчальний сайт, тому повідомлення поки не надсилається на пошту.';
+        this.reset();
+    });
+});
+</script>
+
+</body>
+</html>
